@@ -67,7 +67,7 @@ function runProgram(){
     */
         function handleNewVictor() {
             
-
+            
         }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -83,37 +83,37 @@ function runProgram(){
     //Redrawing Both Rectangles
 
         function redrawRectangles() {
+            $("#topRectangle").css("top", positionY);
             $("#topRectangle").css("left", positionX);
+
+            $("#bottomRectangle").css("top", positionY);
             $("#bottomRectangle").css("left", positionX);
         }
 
+
     // Moving Rectangles
 
-        function handleKeyDown() {
+        function handleKeyDown(event) {
             // First Player
                 if (event.which === letter.Left) {
                 speedX -= 5;
-                console.log("A pressed by first player");
                 }
                 else if (event.which === letter.Right) {
                 speedX += 5;
-                console.log("D pressed by first player");
                 }
 
             // Second Player
                 if (event.which === arrow.Left) {
                 speedX -= 5;
-                console.log("Left arrow pressed by second player");
                 }
                 else if (event.which === arrow.Right) {
                 speedX += 5;
-                console.log("Right arrow pressed by second player");
                 }
         }
 
     // Stopping Rectangles
 
-        function handleKeyUp() {
+        function handleKeyUp(event) {
             // First Player
                 if (event.which === letter.Left) {
                 speedX = 0;
@@ -134,38 +134,38 @@ function runProgram(){
 
     // Circle
 
-        /*
-        moveCircle() {
-            positionX += speedX;
+
+
+
+
+        function moveCircle() {
             positionY += speedY;
         }
 
-        redrawCircle() {
+        function redrawCircle() {
             $('#circle').css("left", positionX);
             $('#circle').css("top", positionY);
         }
 
-        repositionCircle() {
+        function repositionCircle() {
             if (positionY > BOARD_WIDTH) {
-            speedX = -speedX;
+            speedX -= speedX;
             }
             else if (positionY < 0) {
-            speedX = -speedX;
+            speedX -= speedX;
             }
-
-            if (positionY > BOARD_HEIGHT) {
-            speedY = -speedY;
+            else if (positionY > BOARD_HEIGHT) {
+            speedY -= speedY;
             }
             else if (positionY < 0) {
-            speedY = -speedY;
+            speedY -= speedY;
             }
         }
 
-        */
+    
 
 
     // Updating rounds
-
 
 
     // Ending Game

@@ -1,3 +1,7 @@
 tasks:
   - init: npm install
     command: npm start
+
+vscode:
+  extensions:
+    - ritwickdey.LiveServer@5.6.1:5Mhl1RgVVDcIym163x8r+w==
