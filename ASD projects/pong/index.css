@@ -2,7 +2,7 @@
 body {
   width: 450px;
   height: 650px;
-  background-color: rgb(209, 173, 173);
+  background-color: rgb(241, 207, 209);
 }
 
 #board {
@@ -29,9 +29,9 @@ body {
 #round {
     width: 70px;
     height: 70px;
-    background-color: rgb(209, 173, 173);
+    background-color: rgb(231, 183, 186);
     font-size: 150%;
-    text-decoration-color: rgb(26, 22, 12);
+    text-decoration-color: rgb(112, 76, 59);
     text-align: center;
     border: 2px dotted rgb(247, 246, 230);
     display: block;
@@ -44,7 +44,7 @@ body {
 
     #topRectangle {
     /* appearance */
-    background-color: rgb(209, 173, 173);
+    background-color: rgb(230, 168, 181);
     width: 150px;
     height: 30px;
     /* positioning */
@@ -56,9 +56,9 @@ body {
     #firstScore {
         width: 70px;
         height: 70px;
-        background-color: rgb(209, 173, 173);
+        background-color: rgb(231, 183, 186);
         font-size: 300%;
-        text-decoration-color: rgb(26, 22, 12);
+        text-decoration-color: rgb(112, 76, 59);
         text-align: center;
         display: block;
         position: absolute;
@@ -70,7 +70,7 @@ body {
 
     #bottomRectangle {
     /* appearance */
-    background-color: rgb(209, 173, 173);
+    background-color: rgb(230, 168, 181);
     width: 150px;
     height: 30px;
     /* positioning */
@@ -82,9 +82,9 @@ body {
     #secondScore {
         width: 70px;
         height: 70px;
-        background-color: rgb(209, 173, 173);
+        background-color: rgb(231, 183, 186);
         font-size: 300%;
-        text-decoration-color: rgb(26, 22, 12);
+        text-decoration-color: rgb(112, 76, 59);
         text-align: center;
         display: block;
         position: absolute;

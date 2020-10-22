@@ -178,10 +178,7 @@ function runProgram(){
             var obj2 = factoryFunction("#bottomRectangle");
 
 
-
-
-
-    /*
+/*
     function doCollide(square1, square2) {
     // TODO: calculate and store the remaining
   
@@ -207,8 +204,9 @@ function runProgram(){
         else {
         return(false);
         }
-    
-    */
+
+
+        */
 
 
     // Updating rounds
