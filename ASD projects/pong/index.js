@@ -51,9 +51,6 @@ function runProgram(){
     */
 
         function newFrame() {
-            handleKeyDown();
-            handleKeyUp();
-
             redrawRectangles();
             repositionRectangles();
 
@@ -67,7 +64,7 @@ function runProgram(){
     */
         function handleNewVictor() {
             
-            
+
         }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -162,7 +159,56 @@ function runProgram(){
             }
         }
 
+        function factoryFunction(id){
+            obj.id = id;
+            obj.y = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
+            obj.x = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+            obj.width = $(id).width();
+            obj.height = $(id).height();
+            obj.speedX = 0;
+            obj.speedY = 0;
+            
+            return obj1 && obj2;
+}
+
+
+            var obj = {};
+
+            var obj1 = factoryFunction("#topRectangle");
+            var obj2 = factoryFunction("#bottomRectangle");
+
+
+
+
+
+    /*
+    function doCollide(square1, square2) {
+    // TODO: calculate and store the remaining
+  
+    // sides of the square1
+        square1.leftX = square1.x;
+        square1.topY = square1.y;
+  
+  
+        square1.rightX = square1.width + square1.x;
+        square1.bottomY = square1.height + square1.y;
     
+    // TODO: Do the same for square2
+        square2.leftX = square2.x;
+        square2.topY = square2.y;
+  
+        square2.rightX = square2.width + square2.x;
+        square2.bottomY = square2.height + square2.y;
+
+    // TODO: Return true if they are overlapping, false otherwise
+        if ((square2.rightX >= square1.leftX) && (square2.leftX <= square1.rightX) && (square2.topY <= square1.bottomY) && (square2.bottomY >= square1.topY)){
+        return(true);
+        }
+        else {
+        return(false);
+        }
+    
+    */
 
 
     // Updating rounds
