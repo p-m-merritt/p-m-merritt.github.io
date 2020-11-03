@@ -57,6 +57,8 @@ function runProgram(){
             moveCircle();
             redrawCircle();
             repositionCircle();
+            
+            factoryFunction();
         }
   
     /* 
@@ -160,6 +162,9 @@ function runProgram(){
         }
 
         function factoryFunction(id){
+            var obj = {};
+
+
             obj.id = id;
             obj.y = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
             obj.x = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
@@ -172,8 +177,7 @@ function runProgram(){
 }
 
 
-            var obj = {};
-
+            
             var obj1 = factoryFunction("#topRectangle");
             var obj2 = factoryFunction("#bottomRectangle");
 
