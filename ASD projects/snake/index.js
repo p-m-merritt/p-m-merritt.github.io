@@ -66,8 +66,6 @@ var head = snake[0];
         function newFrame() {
             repositionHead();
             redrawHead();
-
-            handleKeyDown();
         }
   
     /* 
@@ -102,7 +100,7 @@ var head = snake[0];
 
         /* Moving */
 
-            function handleKeyDown() {
+            function handleKeyDown(event) {
                 if (event.which === key.Left) {
                 speedX -= 20;
                 speedY = 0;
@@ -125,14 +123,14 @@ var head = snake[0];
             }
 
 
-            function body() {
-                if () {
+            // function body() {
+            //     if () {
 
-                }
-                else{
+            //     }
+            //     else{
 
-                }
-            }
+            //     }
+            // }
 
         /* Collision */
 
@@ -146,18 +144,18 @@ var head = snake[0];
                 }
 
                 else if (positionY > BOARD_HEIGHT) {
-                speedX = 0;
+                speedY = 0;
                 }
 
                 else if (positionY < 0) {
-                speedX = 0;
+                speedY = 0;
                 }
             }
 
     // The apple's stuff
 
         function redrawApple() {
-            $('#apple').css("left", Math.random() * BOARD_WIDTH;
+            $('#apple').css("left", Math.random() * BOARD_WIDTH);
         }
   
         /* The Score */
@@ -167,14 +165,13 @@ var head = snake[0];
             $('#counter').text(points);
         }
 
+/*
 function doCollide(square1, square2) {
     // TODO: calculate and store the remaining
 
     // sides of the square1
         square1.leftX = square1.x;
         square1.topY = square1.y;
-
-
 
         square1.rightX = square1.width + square1.x;
         square1.bottomY = square1.height + square1.y;
@@ -194,7 +191,7 @@ function doCollide(square1, square2) {
         else {
         return(false);
         }  
-
+*/
 
 
 
