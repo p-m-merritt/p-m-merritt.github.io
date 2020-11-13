@@ -17,7 +17,7 @@ function runProgram(){
     var speedY = 0;
 
     var points = 0;
-
+/*
     var BOARD_WIDTH = 440;
     var BOARD_HEIGHT = 440;
     var HEAD_SIZE = 20; 
@@ -28,7 +28,6 @@ function runProgram(){
         "BOTTOM": BOARD_HEIGHT - HEAD_SIZE
     }
 
-/*
   // Game Item Objects
 
     var snake = [5, 4, 3, 2, 1, 0];
