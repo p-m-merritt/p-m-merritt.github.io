@@ -6,7 +6,7 @@ body {
 #board {
     width: 440px;
     height: 440px;
-    border: 1px solid rgb(53, 41, 41);
+    border: 1px solid rgb(240, 233, 233);
     background-color: rgb(118, 184, 118);
     position: relative;
 }
@@ -16,8 +16,7 @@ body {
     width: 20px;
     height: 20px;
     position: absolute;
-    left: 100px;
-    top: 100px;
+
 }
 
 #head {
@@ -28,4 +27,26 @@ body {
     position: absolute;
     left: 400px;
     top: 400px;
+}
+
+#score {
+    width: 60px;
+    height: 60px;
+    font-size: 200%;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 460px;
+    left: 5px;
+}
+
+#counter {
+    width: 60px;
+    height: 60px;
+    font-size: 200%;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 460px;
+    left: 80px;
 }
