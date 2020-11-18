@@ -17,7 +17,7 @@ function runProgram(){
     var speedY = 0;
 
     var points = 0;
-/*
+
     var BOARD_WIDTH = 440;
     var BOARD_HEIGHT = 440;
     var HEAD_SIZE = 20; 
@@ -32,12 +32,11 @@ function runProgram(){
 
     var snake = [5, 4, 3, 2, 1, 0];
 
-    /*
-var head = snake[0];
+    var head = snake[0];
 
-    var newPiece.x = snake[0].x
-    var newPiece.y = snake[0].y
-    */
+    var newPieceX = snake[0].x
+    var newPieceY = snake[0].y
+
 
     var key = {
         "Left": 37,
@@ -45,8 +44,6 @@ var head = snake[0];
         "Right": 39,
         "Down": 38,
     }
-
-
 
 
 
@@ -157,6 +154,19 @@ var head = snake[0];
         function redrawApple() {
             $('#apple').css("left", Math.random() * BOARD_WIDTH);
         }
+
+        function moveApple() {
+        // produce new apple position
+        
+            for (var i = 0; i < snakeBody.length; i++){
+                if (/* apple on top of snake */){
+                moveApple();
+                break;
+                }
+            }
+        }
+
+
   
         /* The Score */
 
