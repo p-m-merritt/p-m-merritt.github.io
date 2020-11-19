@@ -39,8 +39,7 @@ function runProgram(){
 
         var head = snake[0];
 
-        var newPieceX = snake[0].x
-        var newPieceY = snake[0].y
+        
 
     /* Apple's */
 
@@ -115,6 +114,7 @@ function runProgram(){
                 newPiece.width = $(".snake").width();
                 newPiece.height = $(".snake").height();
                 newPiece.x = 0
+                newPiece.y = 0
                 return newPiece;
             }
 
