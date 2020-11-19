@@ -11,7 +11,7 @@ body {
     position: relative;
 }
 
-#apple {
+.apple {
     background-color: rgb(196, 20, 20);
     width: 20px;
     height: 20px;
@@ -20,9 +20,9 @@ body {
 }
 
 #head {
-    background-color: rgb(233, 221, 221);
     width: 20px;
     height: 20px;
+    background-color: rgb(233, 221, 221);
     border: 1px solid rgb(228, 165, 71);
     position: absolute;
     left: 400px;
@@ -49,4 +49,11 @@ body {
     position: absolute;
     top: 460px;
     left: 80px;
+}
+
+
+.snake{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(233, 221, 221);
 }

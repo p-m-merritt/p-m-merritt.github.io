@@ -18,8 +18,12 @@ function runProgram(){
 
     var points = 0;
 
-    var BOARD_WIDTH = 440;
-    var BOARD_HEIGHT = 440;
+    var BOARD_WIDTH = $("#board").width();
+    var APPLE_SIZE = $("#apple").width()
+
+
+
+    var BOARD_HEIGHT = $("#board").height();
     var HEAD_SIZE = 20; 
     var HEAD_MAX = {
         "LEFT": 0,
@@ -37,6 +41,8 @@ function runProgram(){
     var newPieceX = snake[0].x
     var newPieceY = snake[0].y
 
+var apple0 = Apple("#apple0");
+var apples = [apple0];
 
     var key = {
         "Left": 37,
@@ -95,6 +101,23 @@ function runProgram(){
                 $("#head").css("top", positionY);
             }
 
+        /* Body */
+
+            function makeSnake(id){
+                var newPiece = {};
+                newPiece.id = id;
+                newPiece.width = $(".snake").width();
+                newPiece.height = $(".snake").height();
+                newPiece.x = 0
+                return newPiece;
+            }
+
+            var snake = [];
+            snake.push(makeSnake("#snake"))
+
+            snake[0].x = 20;
+            snake[0].y = 20;
+
         /* Moving */
 
             function handleKeyDown(event) {
@@ -118,16 +141,6 @@ function runProgram(){
                 speedX = 0;
                 }
             }
-
-
-            // function body() {
-            //     if () {
-
-            //     }
-            //     else{
-
-            //     }
-            // }
 
         /* Collision */
 
@@ -153,19 +166,44 @@ function runProgram(){
 
         function redrawApple() {
             $('#apple').css("left", Math.random() * BOARD_WIDTH);
+            
+            for(var i = 0; i < balls.length; i++){
+                moveBall(balls[i]);  
+            }
         }
 
         function moveApple() {
-        // produce new apple position
-        
+            // produce new apple position
+            apple.x = randomInteger( BOARD_SIZE/APPLE_SIZE) * APPLE_SIZE;
+            // do the same thing for apple.y
+            apple.y = randomInteger( BOARD_SIZE/APPLE_SIZE) * APPLE_SIZE;
+
+            // update apple's CSS using jQuery (both left and top values)
+            $("#apple").css("left", );
+            $("#apple").css("top", );
+
+            // snakeBody is an array -- how do you get a piece out while itering?
             for (var i = 0; i < snakeBody.length; i++){
-                if (/* apple on top of snake */){
-                moveApple();
-                break;
+                if (doCollide(apple, snakeBody[i])){
+                    moveApple();
+                    break;
                 }
             }
         }
 
+        function randomInteger(max) {
+            var randomInt = Math.floor(Math.random() * max);
+            return randomInt;
+        }
+
+        function doCollide(obj1, obj2) {
+            if (obj1.x === obj2.x && obj1.y === obj2.y) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
   
         /* The Score */
@@ -202,6 +240,26 @@ function doCollide(square1, square2) {
         return(false);
         }  
 */
+
+function apple(id) {
+    var apple = {};
+	apple.id = id
+    apple.x = randomLocation();
+    apple.y = randomLocation();
+    apple.velocityX = randomVelocity();
+    apple.velocityY = randomVelocity();
+    return apple;
+}
+
+function randomLocation() {
+    return Math.random() * BOARD_WIDTH;
+}
+
+function moveApple(apple) {
+	// redrawing
+    $(apple.id).css("left", apple.x);
+    $(apple.id).css("top", apple.y);
+}
 
 
 
