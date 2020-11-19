@@ -162,6 +162,31 @@ var apples = [apple0];
                 }
             }
 
+            /*
+                function doCollide(square1, square2) {
+                    // TODO: calculate and store the remaining
+
+                    // sides of the square1
+                        square1.leftX = square1.x;
+                        square1.topY = square1.y;
+
+                        square1.rightX = square1.width + square1.x;
+                        square1.bottomY = square1.height + square1.y;
+
+                    // TODO: Do the same for square2
+                        square2.leftX = square2.x;
+                        square2.topY = square2.y;
+
+
+                        square2.rightX = square2.width + square2.x;
+                        square2.bottomY = square2.height + square2.y;
+
+                    // TODO: Return true if they are overlapping, false otherwise
+                        if ((square2.rightX >= square1.leftX) && (square2.leftX <= square1.rightX) && (square2.topY <= square1.bottomY) && (square2.bottomY >= square1.topY)){
+                        return(increaseScore();
+                        }
+            */
+
     // The apple's stuff
 
         function redrawApple() {
@@ -205,6 +230,26 @@ var apples = [apple0];
             }
         }
 
+        function apple(id) {
+            var apple = {};
+            apple.id = id
+            apple.x = randomLocation();
+            apple.y = randomLocation();
+            apple.velocityX = randomVelocity();
+            apple.velocityY = randomVelocity();
+            return apple;
+        }
+
+        function randomLocation() {
+            return Math.random() * BOARD_WIDTH;
+        }
+
+        function moveApple(apple) {
+            // redrawing
+            $(apple.id).css("left", apple.x);
+            $(apple.id).css("top", apple.y);
+        }
+
   
         /* The Score */
 
@@ -213,53 +258,9 @@ var apples = [apple0];
             $('#counter').text(points);
         }
 
-/*
-function doCollide(square1, square2) {
-    // TODO: calculate and store the remaining
-
-    // sides of the square1
-        square1.leftX = square1.x;
-        square1.topY = square1.y;
-
-        square1.rightX = square1.width + square1.x;
-        square1.bottomY = square1.height + square1.y;
-
-    // TODO: Do the same for square2
-        square2.leftX = square2.x;
-        square2.topY = square2.y;
 
 
-        square2.rightX = square2.width + square2.x;
-        square2.bottomY = square2.height + square2.y;
 
-    // TODO: Return true if they are overlapping, false otherwise
-        if ((square2.rightX >= square1.leftX) && (square2.leftX <= square1.rightX) && (square2.topY <= square1.bottomY) && (square2.bottomY >= square1.topY)){
-        return(true);
-        }
-        else {
-        return(false);
-        }  
-*/
-
-function apple(id) {
-    var apple = {};
-	apple.id = id
-    apple.x = randomLocation();
-    apple.y = randomLocation();
-    apple.velocityX = randomVelocity();
-    apple.velocityY = randomVelocity();
-    return apple;
-}
-
-function randomLocation() {
-    return Math.random() * BOARD_WIDTH;
-}
-
-function moveApple(apple) {
-	// redrawing
-    $(apple.id).css("left", apple.x);
-    $(apple.id).css("top", apple.y);
-}
 
 
 
