@@ -41,8 +41,8 @@ function runProgram(){
     var newPieceX = snake[0].x
     var newPieceY = snake[0].y
 
-var apple0 = Apple("#apple0");
-var apples = [apple0];
+    var apple0 = Apple("#apple0");
+    var apples = [apple0];
 
     var key = {
         "Left": 37,

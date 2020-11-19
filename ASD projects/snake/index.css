@@ -11,7 +11,7 @@ body {
     position: relative;
 }
 
-.apple {
+#apple {
     background-color: rgb(196, 20, 20);
     width: 20px;
     height: 20px;
