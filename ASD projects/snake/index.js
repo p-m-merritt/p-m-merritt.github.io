@@ -95,7 +95,7 @@ function runProgram(){
 
     // The Snake's Stuff
 
-        /* Head */
+        /* Head (Fine "I think")*/
 
             function repositionHead() {
                 positionX += speedX;
@@ -107,7 +107,7 @@ function runProgram(){
                 $("#head").css("top", positionY);
             }
 
-        /* Body */
+        /* Body (Concerned)*/
 
             function makeSnake(id){
                 var newPiece = {};
@@ -148,7 +148,7 @@ function runProgram(){
                 }
             }
 
-        /* Collision */
+        /* Collision (Concerned)*/
 
             function stopSnake() {
                 if (positionX > BOARD_WIDTH) {
@@ -168,7 +168,7 @@ function runProgram(){
                 }
             }
 
-    // The apple's stuff
+    // The apple's stuff (Probably a problem area)
 
         function redrawApple() {
             $('#apple').css("left", Math.random() * BOARD_WIDTH);
