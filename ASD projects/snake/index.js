@@ -173,8 +173,8 @@ function runProgram(){
         function redrawApple() {
             $('#apple').css("left", Math.random() * BOARD_WIDTH);
             
-            for(var i = 0; i < balls.length; i++){
-                moveBall(balls[i]);  
+            for(var i = 0; i < apples.length; i++){
+                moveApple(apples[i]);  
             }
         }
 
