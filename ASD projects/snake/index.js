@@ -35,15 +35,17 @@ function runProgram(){
 
     /* Snake's */
 
-        var snake = [5, 4, 3, 2, 1, 0];
+        var snake = [];
+            snake.push(makeSnake("#snake"))
 
-        var head = snake[0];
-
+            snake[0].x = 20;
+            snake[0].y = 20;
         
+        var head = snake[0];        
 
     /* Apple's */
 
-        var apple0 = Apple("#apple0");
+        var apple0 = apple("#apple0");
         var apples = [apple0];
 
     /* Moving */
@@ -118,32 +120,26 @@ function runProgram(){
                 return newPiece;
             }
 
-            var snake = [];
-            snake.push(makeSnake("#snake"))
-
-            snake[0].x = 20;
-            snake[0].y = 20;
-
         /* Moving (Done "Note: Breaks when other things are broken") */
 
             function handleKeyDown(event) {
                 if (event.which === key.Left) {
-                speedX -= 20;
+                speedX = -20;
                 speedY = 0;
                 }
 
                 else if (event.which === key.Right) {
-                speedX += 20;
+                speedX = 20;
                 speedY = 0;
                 }
 
                 else if (event.which === key.Up) {
-                speedY += 20;
+                speedY = 20;
                 speedX = 0;
                 }
 
                 else if (event.which === key.Down) {
-                speedY -= 20;
+                speedY = -20;
                 speedX = 0;
                 }
             }
@@ -179,14 +175,14 @@ function runProgram(){
         }
 
         function moveApple() {
-            apple.x = randomInteger( BOARD_SIZE/APPLE_SIZE) * APPLE_SIZE;
-            apple.y = randomInteger( BOARD_SIZE/APPLE_SIZE) * APPLE_SIZE;
+            apple.x = randomInteger( BOARD_WIDTH/APPLE_SIZE) * APPLE_SIZE;
+            apple.y = randomInteger( BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
 
             $("#apple").css("left", apple.x);
             $("#apple").css("top", apple.y);
 
-            for (var i = 0; i < snakeBody.length; i++){
-                if (doCollide(apple, snakeBody[i])){
+            for (var i = 0; i < snake.length; i++){
+                if (doCollide(apple, snake[i])){
                     moveApple();
                     break;
                 }
@@ -209,6 +205,15 @@ function runProgram(){
         function randomLocation() {
             return Math.random() * BOARD_WIDTH;
         }
+
+        function doCollide(obj1, obj2) {
+            if (obj1.x === obj2.x && obj1.y === obj2.y) {
+                return appleEaten();
+            }
+        }
+console.log(doCollide(apple, snake[i]));
+
+
 
         /* The Score */
 
