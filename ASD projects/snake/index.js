@@ -45,8 +45,11 @@ function runProgram(){
 
     /* Apple's */
 
-        var apple0 = apple("#apple0");
-        var apples = [apple0];
+        var apple = apple('#apple');
+        $("#apple").css("left", apple.x)
+        $('#apple').css("top", apple.y);
+        
+
 
     /* Moving */
 
@@ -166,20 +169,9 @@ function runProgram(){
 
     // The apple's stuff (Probably a problem area)
 
-        function redrawApple() {
-            $('#apple').css("left", Math.random() * BOARD_WIDTH);
-            
-            for(var i = 0; i < apples.length; i++){
-                moveApple(apples[i]);  
-            }
-        }
-
         function moveApple() {
-            apple.x = randomInteger( BOARD_WIDTH/APPLE_SIZE) * APPLE_SIZE;
+            apple.x = randomInteger( BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
             apple.y = randomInteger( BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
-
-            $("#apple").css("left", apple.x);
-            $("#apple").css("top", apple.y);
 
             for (var i = 0; i < snake.length; i++){
                 if (doCollide(apple, snake[i])){
@@ -203,7 +195,7 @@ function runProgram(){
         }
 
         function randomLocation() {
-            return Math.random() * BOARD_WIDTH;
+            return Math.random((BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE);
         }
 
         function doCollide(obj1, obj2) {
@@ -211,7 +203,7 @@ function runProgram(){
                 return appleEaten();
             }
         }
-console.log(doCollide(apple, snake[i]));
+
 
 
 
