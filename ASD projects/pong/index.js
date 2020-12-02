@@ -10,12 +10,6 @@ function runProgram(){
     // Constant Variables
         var FRAMES_PER_SECOND_INTERVAL = 1000 / 60;
 
-        var positionX = 0;
-        var positionY = 0;
-
-        var speedX = 0;
-        var speedY = 0;
-
         var BOARD_HEIGHT = $('#board').height();
         var BOARD_WIDTH = $('#board').width();
 
@@ -76,17 +70,17 @@ function runProgram(){
     // Reposition Rectangles
 
         function repositionRectangles() {
-            positionX += speedX;
+            obj.x += speedX;
         }
 
     //Redrawing Both Rectangles
 
         function redrawRectangles() {
-            $("#topRectangle").css("top", positionY);
-            $("#topRectangle").css("left", positionX);
+            $("#topRectangle").css("top", obj.y);
+            $("#topRectangle").css("left", obj.x);
 
-            $("#bottomRectangle").css("top", positionY);
-            $("#bottomRectangle").css("left", positionX);
+            $("#bottomRectangle").css("top", obj.y);
+            $("#bottomRectangle").css("left", obj.x);
         }
 
 
@@ -133,21 +127,17 @@ function runProgram(){
 
     // Circle
 
-
-
-
-
         function moveCircle() {
-            positionY += speedY;
+            obj.y += speedY;
         }
 
         function redrawCircle() {
-            $('#circle').css("left", positionX);
-            $('#circle').css("top", positionY);
+            $('#circle').css("left", obj.x);
+            $('#circle').css("top", obj.y);
         }
 
         function repositionCircle() {
-            if (positionY > BOARD_WIDTH) {
+            if (obj.y > BOARD_WIDTH) {
             speedX -= speedX;
             }
             else if (positionY < 0) {
@@ -164,7 +154,6 @@ function runProgram(){
         function factoryFunction(id){
             var obj = {};
 
-
             obj.id = id;
             obj.y = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
             obj.x = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
@@ -173,14 +162,12 @@ function runProgram(){
             obj.speedX = 0;
             obj.speedY = 0;
             
-            return obj1 && obj2;
-}
+            return obj1 && obj2 && obj3;
+        }
 
-
-            
             var obj1 = factoryFunction("#topRectangle");
             var obj2 = factoryFunction("#bottomRectangle");
-
+            var obj3 = factoryFunction("#circle");
 
 /*
     function doCollide(square1, square2) {
