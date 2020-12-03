@@ -59,97 +59,13 @@ function runProgram(){
     Called in response to events.
     */
         function handleNewVictor() {
-            
+            collision()
 
         }
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-
-    // Reposition Rectangles
-
-        function repositionRectangles() {
-            obj.x += speedX;
-        }
-
-    //Redrawing Both Rectangles
-
-        function redrawRectangles() {
-            $("#topRectangle").css("top", obj.y);
-            $("#topRectangle").css("left", obj.x);
-
-            $("#bottomRectangle").css("top", obj.y);
-            $("#bottomRectangle").css("left", obj.x);
-        }
-
-
-    // Moving Rectangles
-
-        function handleKeyDown(event) {
-            // First Player
-                if (event.which === letter.Left) {
-                speedX -= 5;
-                }
-                else if (event.which === letter.Right) {
-                speedX += 5;
-                }
-
-            // Second Player
-                if (event.which === arrow.Left) {
-                speedX -= 5;
-                }
-                else if (event.which === arrow.Right) {
-                speedX += 5;
-                }
-        }
-
-    // Stopping Rectangles
-
-        function handleKeyUp(event) {
-            // First Player
-                if (event.which === letter.Left) {
-                speedX = 0;
-                }
-                else if (event.which === letter.Right) {
-                speedX = 0;
-                }
-
-            // Second Player
-                if (event.which === arrow.Left) {
-                speedX = 0;
-                }
-                else if (event.which === arrow.Right) {
-                speedX = 0;
-                }       
-        }
-
-
-    // Circle
-
-        function moveCircle() {
-            obj.y += speedY;
-        }
-
-        function redrawCircle() {
-            $('#circle').css("left", obj.x);
-            $('#circle').css("top", obj.y);
-        }
-
-        function repositionCircle() {
-            if (obj.y > BOARD_WIDTH) {
-            speedX -= speedX;
-            }
-            else if (positionY < 0) {
-            speedX -= speedX;
-            }
-            else if (positionY > BOARD_HEIGHT) {
-            speedY -= speedY;
-            }
-            else if (positionY < 0) {
-            speedY -= speedY;
-            }
-        }
 
         function factoryFunction(id){
             var obj = {};
@@ -162,12 +78,107 @@ function runProgram(){
             obj.speedX = 0;
             obj.speedY = 0;
             
-            return obj1 && obj2 && obj3;
+            return obj;
         }
 
-            var obj1 = factoryFunction("#topRectangle");
-            var obj2 = factoryFunction("#bottomRectangle");
-            var obj3 = factoryFunction("#circle");
+        var obj1 = factoryFunction("#topRectangle");
+        var obj2 = factoryFunction("#bottomRectangle");
+        var obj3 = factoryFunction("#circle");
+
+        function collision(){
+            if (obj1.x < BOARD_WIDTH && obj1.y > BOARD_WIDTH) {
+                obj1.speedX = 0;
+                secondPoints + 1;
+            }
+            else (BOARD_WIDTH > obj2.x && BOARD_WIDTH < obj2.y){    
+                obj2.speedX = 0;
+                firstPoints + 1;
+            }
+        }
+
+    // Reposition Rectangles
+
+        function repositionRectangles() {
+            obj1.x += obj1.speedX;
+            obj2.x += obj2.speedX;
+        }
+
+    //Redrawing Both Rectangles
+
+        function redrawRectangles() {
+            $("#topRectangle").css("top", obj1.y);
+            $("#topRectangle").css("left", obj1.x);
+
+            $("#bottomRectangle").css("top", obj2.y);
+            $("#bottomRectangle").css("left", obj2.x);
+        }
+
+    // Moving Rectangles
+
+        function handleKeyDown(event) {
+            // First Player
+                if (event.which === letter.Left) {
+                obj1.speedX -= 5;
+                }
+                else if (event.which === letter.Right) {
+                obj1.speedX += 5;
+                }
+
+            // Second Player
+                if (event.which === arrow.Left) {
+                obj2.speedX -= 5;
+                }
+                else if (event.which === arrow.Right) {
+                obj2.speedX += 5;
+                }
+        }
+
+    // Stopping Rectangles
+
+        function handleKeyUp(event) {
+            // First Player
+                if (event.which === letter.Left) {
+                obj1.speedX = 0;
+                }
+                else if (event.which === letter.Right) {
+                obj1.speedX = 0;
+                }
+
+            // Second Player
+                if (event.which === arrow.Left) {
+                obj2.speedX = 0;
+                }
+                else if (event.which === arrow.Right) {
+                obj2.speedX = 0;
+                }       
+        }
+
+    // Circle
+
+        function moveCircle() {
+            obj3.y += obj3.speedY;
+        }
+
+        function redrawCircle() {
+            $('#circle').css("left", obj3.x);
+            $('#circle').css("top", obj3.y);
+        }
+
+        function repositionCircle() {
+            if (obj3.y > BOARD_WIDTH) {
+            obj3.speedX -= obj3.speedX;
+            }
+            else if (obj3.y < 0) {
+            obj3.speedX -= obj3.speedX;
+            }
+            else if (obj3.y > BOARD_HEIGHT) {
+            obj3.speedY -= obj3.speedY;
+            }
+            else if (obj3.y < 0) {
+            obj3.speedY -= obj3.speedY;
+            }
+        }
+
 
 /*
     function doCollide(square1, square2) {
