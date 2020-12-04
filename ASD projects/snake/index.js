@@ -79,12 +79,6 @@ function runProgram(){
             redrawApple();
         }
 
-        function crash() {
-            stopSnake();
-            newFrame();
-            redrawApple();
-        }
-
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -118,6 +112,9 @@ function runProgram(){
                 return body;
             }
 
+
+
+            
 /*
             snake.push(makeSnake('#body1'));
             snake.push(makeSnake('#body2'));
@@ -164,22 +161,17 @@ function runProgram(){
         /* Collision (Unsure) */
 
             function stopSnake() {
-                if (positionX > BOARD_WIDTH) {
+                if (positionX > BOARD_WIDTH || positionX < 0) {
                     speedX = 0;
+                    newFrame();
                 }
 
-                else if (positionX < 0) {
-                    speedX = 0;
-                }
-
-                else if (positionY > BOARD_HEIGHT) {
+                else if (positionY > BOARD_HEIGHT || positionY < 0) {
                     speedY = 0;
+                    newFrame();
                 }
 
-                else if (positionY < 0) {
-                    speedY = 0;
-                }
-            }
+
 
     // The apple's stuff (Probably a problem area)
 
