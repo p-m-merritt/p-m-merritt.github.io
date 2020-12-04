@@ -12,7 +12,7 @@ function runProgram(){
   
     var positionX = 0;
     var positionY = 0;
-            
+
     var speedX = 0;
     var speedY = 0;
 
@@ -23,33 +23,22 @@ function runProgram(){
 
     var APPLE_SIZE = $("#apple").width()
 
-    var HEAD_SIZE = $("#head").width();
-    var HEAD_MAX = {
-        "LEFT": 0,
-        "RIGHT": BOARD_WIDTH - HEAD_SIZE,
-        "TOP": 0,
-        "BOTTOM": BOARD_HEIGHT - HEAD_SIZE
-    }
-
   // Game Item Objects
 
     /* Snake's */
 
         var snake = [];
             snake.push(makeSnake("#snake"))
-
             snake[0].x = 20;
             snake[0].y = 20;
-        
-        var head = snake[0];        
+        var head = snake[0];
+        return head; 
 
     /* Apple's */
 
         var apple = apple('#apple');
-        $("#apple").css("left", apple.x)
+        $("#apple").css("left", apple.x);
         $('#apple').css("top", apple.y);
-        
-
 
     /* Moving */
 
@@ -74,15 +63,17 @@ function runProgram(){
     On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
     by calling this function and executing the code inside.
     */
+
         function newFrame() {
             repositionHead();
             redrawHead();
             moveApple();
         }
-  
+
     /* 
     Called in response to events.
     */
+
         function appleEaten() {
             increaseScore();
             redrawApple();
@@ -91,7 +82,9 @@ function runProgram(){
         function crash() {
             stopSnake();
             newFrame();
+            redrawApple();
         }
+
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -99,7 +92,7 @@ function runProgram(){
 
     // The Snake's Stuff
 
-        /* Head (Fine "I think")*/
+        /* Head (Fine) */
 
             function repositionHead() {
                 positionX += speedX;
@@ -111,67 +104,97 @@ function runProgram(){
                 $("#head").css("top", positionY);
             }
 
-        /* Body (Concerned)*/
+        /* Body (Concerned) */
 
             function makeSnake(id){
-                var newPiece = {};
-                newPiece.id = id;
-                newPiece.width = $(".snake").width();
-                newPiece.height = $(".snake").height();
-                newPiece.x = 0
-                newPiece.y = 0
-                return newPiece;
+                var body = {};
+
+                body.id = id;
+                body.width = $(".snake").width();
+                body.height = $(".snake").height();
+                body.x = 0
+                body.y = 0
+
+                return body;
             }
 
-        /* Moving (Done "Note: Breaks when other things are broken") */
+/*
+            snake.push(makeSnake('#body1'));
+            snake.push(makeSnake('#body2'));
+            
+            
+            var snake = [
+                {name: 'a', x: 1, y: 1},
+                {name: 'b', x: 2, y: 2},
+                {name: 'c', x: 3, y: 3},
+                {name: 'd', x: 4, y: 4},
+            ]
+
+            for (var i = body.length-1; i >= i; i--){
+                snake[i].x = snake[i-1].x;
+            }
+            snake[0].x -= 1;
+            */
+
+
+        /* Moving (Done) */
 
             function handleKeyDown(event) {
                 if (event.which === key.Left) {
-                speedX = -20;
-                speedY = 0;
+                    speedX = -20;
+                    speedY = 0;
                 }
 
                 else if (event.which === key.Right) {
-                speedX = 20;
-                speedY = 0;
+                    speedX = 20;
+                    speedY = 0;
                 }
 
                 else if (event.which === key.Up) {
-                speedY = 20;
-                speedX = 0;
+                    speedY = 20;
+                    speedX = 0;
                 }
 
                 else if (event.which === key.Down) {
-                speedY = -20;
-                speedX = 0;
+                    speedY = -20;
+                    speedX = 0;
                 }
             }
 
-        /* Collision (Concerned)*/
+        /* Collision (Unsure) */
 
             function stopSnake() {
                 if (positionX > BOARD_WIDTH) {
-                speedX = 0;
+                    speedX = 0;
                 }
 
                 else if (positionX < 0) {
-                speedX = 0;
+                    speedX = 0;
                 }
 
                 else if (positionY > BOARD_HEIGHT) {
-                speedY = 0;
+                    speedY = 0;
                 }
 
                 else if (positionY < 0) {
-                speedY = 0;
+                    speedY = 0;
                 }
             }
 
     // The apple's stuff (Probably a problem area)
 
+        function randomInteger(max) {
+            var randomInt = Math.floor(Math.random() * max);
+            return randomInt;
+        }
+
+        function randomLocation() {
+            return Math.random((BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE);
+        }
+
         function moveApple() {
-            apple.x = randomInteger( BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
-            apple.y = randomInteger( BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
+            apple.x = randomInteger(BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
+            apple.y = randomInteger(BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
 
             for (var i = 0; i < snake.length; i++){
                 if (doCollide(apple, snake[i])){
@@ -179,11 +202,6 @@ function runProgram(){
                     break;
                 }
             }
-        }
-
-        function randomInteger(max) {
-            var randomInt = Math.floor(Math.random() * max);
-            return randomInt;
         }
 
         function apple(id) {
@@ -194,18 +212,18 @@ function runProgram(){
             return apple;
         }
 
-        function randomLocation() {
-            return Math.random((BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE);
-        }
+
 
         function doCollide(obj1, obj2) {
             if (obj1.x === obj2.x && obj1.y === obj2.y) {
                 return appleEaten();
             }
+
+            var obj1 = snake[0];
+            var obj2 = apple;
         }
 
-
-
+        
 
         /* The Score */
 
@@ -216,6 +234,13 @@ function runProgram(){
 
 
 
+// Ending Things
+
+        function final() {
+            if (points = 10){
+                return endGame();
+            }
+        }
 
     function endGame() {
         // stop the interval timer
