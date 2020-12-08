@@ -3,52 +3,54 @@
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
   
 function runProgram(){
-  ////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////// SETUP /////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////
-
-  // Constant Variables
+    ////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////// SETUP /////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    // Constant Variables
     var FRAMES_PER_SECOND_INTERVAL = 100;
-  
+    
     var positionX = 0;
     var positionY = 0;
-
+    
     var speedX = 0;
     var speedY = 0;
-
+    
     var points = 0;
-
+    
     var BOARD_WIDTH = $("#board").width();
     var BOARD_HEIGHT = $("#board").height();
-
-    var APPLE_SIZE = $("#apple").width()
-
-  // Game Item Objects
-
-    /* Snake's */
-
-        var snake = [];
-            snake.push(makeSnake("#snake"))
-            snake[0].x = 20;
-            snake[0].y = 20;
-        var head = snake[0];
-        return head; 
-
-    /* Apple's */
-
-        var apple = apple('#apple');
-        $("#apple").css("left", apple.x);
-        $('#apple').css("top", apple.y);
-
-    /* Moving */
-
-        var key = {
-            "Left": 37,
-            "Up": 40,
-            "Right": 39,
-            "Down": 38,
-        }
     
+    var APPLE_SIZE = $("#apple").width()
+    
+    // Game Item Objects
+    
+    /* Snake's */
+    
+    var snake = [];
+    snake.push(makeSnake("#snake"))
+    snake[0].x = 20;
+    snake[0].y = 20;
+    var head = snake[0];
+    
+    /* Apple's */
+    
+    var apple = apple('#apple');
+    $("#apple").css("left", apple.x);
+    $('#apple').css("top", apple.y);
+    
+    /* Moving */
+    
+    var key = {
+        "Left": 37,
+        "Up": 40,
+        "Right": 39,
+        "Down": 38,
+    }
+
+    moveApple();
+    
+    console.log(apple.x, apple.y)
 
   // one-time setup
     var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -66,8 +68,9 @@ function runProgram(){
 
         function newFrame() {
             repositionHead();
+            stopSnake();
             redrawHead();
-            moveApple();
+            appleEaten();
         }
 
     /* 
@@ -75,8 +78,13 @@ function runProgram(){
     */
 
         function appleEaten() {
-            increaseScore();
-            redrawApple();
+            console.log(doCollide(apple, snake[0]))
+            if(doCollide(apple, snake[0])) {
+                increaseScore();
+            // redrawApple();
+                moveApple();
+            }
+            
         }
 
 
@@ -158,19 +166,29 @@ function runProgram(){
                 }
             }
 
-        /* Collision (Unsure) */
+        /* Collision (Done) */
 
             function stopSnake() {
-                if (positionX > BOARD_WIDTH || positionX < 0) {
+                if (positionX >= BOARD_WIDTH) {
                     speedX = 0;
-                    newFrame();
+                    positionX = BOARD_WIDTH - 20;
                 }
 
-                else if (positionY > BOARD_HEIGHT || positionY < 0) {
+                else if (positionX + 20 <= 0){
+                    speedX = 0;
+                    positionX = 0;
+                }
+
+                if (positionY >= BOARD_HEIGHT){
                     speedY = 0;
-                    newFrame();
+                    positionY = BOARD_HEIGHT - 20;
                 }
-
+                
+                else if (positionY + 20 <= 0) {
+                    speedY = 0;
+                    positionY = 0;
+                }
+            }
 
 
     // The apple's stuff (Probably a problem area)
@@ -194,6 +212,7 @@ function runProgram(){
                     break;
                 }
             }
+            // redrawApple();
         }
 
         function apple(id) {
@@ -207,12 +226,10 @@ function runProgram(){
 
 
         function doCollide(obj1, obj2) {
-            if (obj1.x === obj2.x && obj1.y === obj2.y) {
-                return appleEaten();
+            if ((obj1.x >= obj2.x && obj1.x + obj1.width <= obj2.x) && (obj1.y >= obj2.y && obj1.y + obj1.height <= obj2.y)) {
+                return true
             }
-
-            var obj1 = snake[0];
-            var obj2 = apple;
+            return false
         }
 
         
