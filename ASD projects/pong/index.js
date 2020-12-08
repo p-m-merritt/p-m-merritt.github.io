@@ -13,6 +13,13 @@ function runProgram(){
         var BOARD_HEIGHT = $('#board').height();
         var BOARD_WIDTH = $('#board').width();
 
+        var obj1 = factoryFunction("#topRectangle");
+        var obj2 = factoryFunction("#bottomRectangle");
+        var obj3 = factoryFunction("#circle");
+
+        obj3.speedX = 5;
+        obj3.speedY = 5;
+
         var firstPoints = 0;
         var secondPoints = 0;
 
@@ -53,14 +60,20 @@ function runProgram(){
             repositionCircle();
             
             factoryFunction();
+
+            borderCrash(obj1);
+            borderCrash(obj2);
+            borderCrash(obj3);
         }
   
     /* 
     Called in response to events.
     */
         function handleNewVictor() {
-            collision()
+            collision(obj1, obj3);
+            collision(obj2, obj3);
 
+            endGame();
         }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -81,19 +94,35 @@ function runProgram(){
             return obj;
         }
 
-        var obj1 = factoryFunction("#topRectangle");
-        var obj2 = factoryFunction("#bottomRectangle");
-        var obj3 = factoryFunction("#circle");
+// Collision
 
-        function collision(){
-            if (obj1.x < BOARD_WIDTH && obj1.y > BOARD_WIDTH) {
-                obj1.speedX = 0;
-                secondPoints + 1;
+        function collision(obj1, obj2) {
+            if ((obj1.x >= obj3.x && obj1.x + obj1.width <= obj3.x) && (obj1.y >= obj3.y && obj1.y + obj1.height <= obj3.y)) {
+                return true
             }
-            else (BOARD_WIDTH > obj2.x && BOARD_WIDTH < obj2.y){    
-                obj2.speedX = 0;
-                firstPoints + 1;
-            }
+            return false
+        }
+
+        function borderCrash() {
+                if (obj.x >= BOARD_WIDTH) {
+                    obj.speedX = 0;
+                    obj.x = BOARD_WIDTH;
+                }
+
+                else if (obj.x <= 0){
+                    obj.speedX = 0;
+                    obj.x = 0;
+                }
+
+                if (obj.x >= BOARD_WIDTH) {
+                    obj.speedX = 0;
+                    obj.x = BOARD_WIDTH;
+                }
+
+                else if (obj.x <= 0){
+                    obj.speedX = 0;
+                    obj.x = 0;
+                }
         }
 
     // Reposition Rectangles
@@ -168,65 +197,38 @@ function runProgram(){
             if (obj3.y > BOARD_WIDTH) {
             obj3.speedX -= obj3.speedX;
             }
+
             else if (obj3.y < 0) {
             obj3.speedX -= obj3.speedX;
             }
+
             else if (obj3.y > BOARD_HEIGHT) {
             obj3.speedY -= obj3.speedY;
             }
+
             else if (obj3.y < 0) {
             obj3.speedY -= obj3.speedY;
             }
         }
-
-
-/*
-    function doCollide(square1, square2) {
-    // TODO: calculate and store the remaining
-  
-    // sides of the square1
-        square1.leftX = square1.x;
-        square1.topY = square1.y;
-  
-  
-        square1.rightX = square1.width + square1.x;
-        square1.bottomY = square1.height + square1.y;
-    
-    // TODO: Do the same for square2
-        square2.leftX = square2.x;
-        square2.topY = square2.y;
-  
-        square2.rightX = square2.width + square2.x;
-        square2.bottomY = square2.height + square2.y;
-
-    // TODO: Return true if they are overlapping, false otherwise
-        if ((square2.rightX >= square1.leftX) && (square2.leftX <= square1.rightX) && (square2.topY <= square1.bottomY) && (square2.bottomY >= square1.topY)){
-        return(true);
-        }
-        else {
-        return(false);
-        }
-
-
-        */
-
 
     // Updating rounds
 
 
+
+
     // Ending Game
 
-        function ResetPosition() {
+        function resetPosition() {
 
         }
 
   
   function endGame() {
-    // stop the interval timer
-    clearInterval(interval);
-
-    // turn off event handlers
-    $(document).off();
+    if (firstPoints === 10  || secondPoints === 10){
+        // stop the interval timer
+            clearInterval(interval);
+         // turn off event handlers
+            $(document).off();
+    }
   }
-  
 }

@@ -239,6 +239,7 @@ function runProgram(){
         function increaseScore() {
             points += 1;
             $('#counter').text(points);
+            final();
         }
 
 
