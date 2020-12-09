@@ -58,8 +58,6 @@ function runProgram(){
             moveCircle();
             redrawCircle();
             repositionCircle();
-            
-            factoryFunction();
 
             borderCrash(obj1);
             borderCrash(obj2);
@@ -70,8 +68,6 @@ function runProgram(){
     Called in response to events.
     */
         function handleNewVictor() {
-            collision(obj1, obj3);
-            collision(obj2, obj3);
 
             endGame();
         }
@@ -96,14 +92,7 @@ function runProgram(){
 
     // Collision
 
-        function collision(obj1, obj3) {
-            if ((obj1.x >= obj3.x && obj1.x + obj1.width <= obj3.x) && (obj1.y >= obj3.y && obj1.y + obj1.height <= obj3.y)) {
-                return true
-            }
-            return false
-        }
-
-        function borderCrash() {
+        function borderCrash(obj) {
             if (obj.x >= BOARD_WIDTH) {
                 obj.speedX = 0;
                 obj.x = BOARD_WIDTH;
