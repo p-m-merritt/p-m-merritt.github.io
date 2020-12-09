@@ -94,9 +94,9 @@ function runProgram(){
             return obj;
         }
 
-// Collision
+    // Collision
 
-        function collision(obj1, obj2) {
+        function collision(obj1, obj3) {
             if ((obj1.x >= obj3.x && obj1.x + obj1.width <= obj3.x) && (obj1.y >= obj3.y && obj1.y + obj1.height <= obj3.y)) {
                 return true
             }
@@ -104,25 +104,25 @@ function runProgram(){
         }
 
         function borderCrash() {
-                if (obj.x >= BOARD_WIDTH) {
-                    obj.speedX = 0;
-                    obj.x = BOARD_WIDTH;
-                }
+            if (obj.x >= BOARD_WIDTH) {
+                obj.speedX = 0;
+                obj.x = BOARD_WIDTH;
+            }
 
-                else if (obj.x <= 0){
-                    obj.speedX = 0;
-                    obj.x = 0;
-                }
+            else if (obj.x <= 0){
+                obj.speedX = 0;
+                obj.x = 0;
+            }
 
-                if (obj.x >= BOARD_WIDTH) {
-                    obj.speedX = 0;
-                    obj.x = BOARD_WIDTH;
-                }
+            if (obj.y >= BOARD_HEIGHT) {
+                obj.speedY = 0;
+                obj.y = BOARD_HEIGHT;
+            }
 
-                else if (obj.x <= 0){
-                    obj.speedX = 0;
-                    obj.x = 0;
-                }
+            else if (obj.y <= 0){
+                obj.speedY = 0;
+                obj.y = 0;
+            }
         }
 
     // Reposition Rectangles
@@ -218,17 +218,12 @@ function runProgram(){
 
     // Ending Game
 
-        function resetPosition() {
-
+        function endGame() {
+            if (firstPoints === 10  || secondPoints === 10){
+                // stop the interval timer
+                    clearInterval(interval);
+                // turn off event handlers
+                    $(document).off();
+            }
         }
-
-  
-  function endGame() {
-    if (firstPoints === 10  || secondPoints === 10){
-        // stop the interval timer
-            clearInterval(interval);
-         // turn off event handlers
-            $(document).off();
-    }
-  }
 }
