@@ -78,9 +78,9 @@ function runProgram(){
     */
 
         function appleEaten() {
-            console.log(doCollide(apple, snake[0]))
+            console.log(doCollide(apple, head))
 
-            if(doCollide(apple, snake[0])) {
+            if(doCollide(apple, head)) {
                 increaseScore();
                 moveApple();
                 bodyFollow();
@@ -122,21 +122,14 @@ function runProgram(){
             }
 
             function bodyFollow() {
-                for (var i = body.length-1; i >= i; i--){
+                for (var i = 0; body.length - 1; i >= i--){
                     snake[i].x = snake[i-1].x;
+
+                    snake.push(makeSnake('#body1'));
+                    snake.push(makeSnake('#body2'));
+
+                    head.x -= 1;
                 }
-
-                snake.push(makeSnake('#body1'));
-                nake.push(makeSnake('#body2'));
-
-                var snake = [
-                    {name: 'a', x: 1, y: 1},
-                    {name: 'b', x: 2, y: 2},
-                    {name: 'c', x: 3, y: 3},
-                    {name: 'd', x: 4, y: 4},
-                ]
-                
-                snake[0].x -= 1;
             }
 
         /* Moving (Done) */
@@ -199,21 +192,6 @@ function runProgram(){
             return Math.random((BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE);
         }
 
-        function moveApple() {
-            apple.x = randomInteger(BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
-            apple.y = randomInteger(BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
-
-            for (var i = 0; i < snake.length; i++){
-                if (doCollide(apple, snake[i])){
-                    moveApple();
-                    break;
-                }
-            }
-
-            $("#apple").css("left", apple.x);
-            $("#apple").css("top", apple.y);
-        }
-
         function apple(id) {
             var apple = {};
             apple.id = id
@@ -227,6 +205,21 @@ function runProgram(){
                 return true
             }
             return false
+        }
+
+        function moveApple() {
+            apple.x = randomInteger(BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
+            apple.y = randomInteger(BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
+
+            for (var i = 0; i < snake.length; i++){
+                if (doCollide(apple, snake[i])){
+                    moveApple();
+                    break;
+                }
+            }
+
+            $("#apple").css("left", apple.x);
+            $("#apple").css("top", apple.y);
         }
 
         /* The Score */
@@ -263,9 +256,7 @@ instead of just the head (and of course,
     
 creating new pieces for the snake if an apple is eaten
 
-for (i = 0; i < snake.length; i++) {
-  snake.push(makeSnake("#snake"))
-}
+
 
 for (statement 1; statement 2; statement 3) {
   // code block to be executed
