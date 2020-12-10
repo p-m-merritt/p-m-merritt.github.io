@@ -79,10 +79,11 @@ function runProgram(){
 
         function appleEaten() {
             console.log(doCollide(apple, snake[0]))
+
             if(doCollide(apple, snake[0])) {
                 increaseScore();
-            // redrawApple();
                 moveApple();
+                bodyFollow();
             }
             
         }
@@ -120,27 +121,23 @@ function runProgram(){
                 return body;
             }
 
+            function bodyFollow() {
+                for (var i = body.length-1; i >= i; i--){
+                    snake[i].x = snake[i-1].x;
+                }
 
+                snake.push(makeSnake('#body1'));
+                nake.push(makeSnake('#body2'));
 
-            
-/*
-            snake.push(makeSnake('#body1'));
-            snake.push(makeSnake('#body2'));
-            
-            
-            var snake = [
-                {name: 'a', x: 1, y: 1},
-                {name: 'b', x: 2, y: 2},
-                {name: 'c', x: 3, y: 3},
-                {name: 'd', x: 4, y: 4},
-            ]
-
-            for (var i = body.length-1; i >= i; i--){
-                snake[i].x = snake[i-1].x;
+                var snake = [
+                    {name: 'a', x: 1, y: 1},
+                    {name: 'b', x: 2, y: 2},
+                    {name: 'c', x: 3, y: 3},
+                    {name: 'd', x: 4, y: 4},
+                ]
+                
+                snake[0].x -= 1;
             }
-            snake[0].x -= 1;
-            */
-
 
         /* Moving (Done) */
 
@@ -212,7 +209,9 @@ function runProgram(){
                     break;
                 }
             }
-            // redrawApple();
+
+            $("#apple").css("left", apple.x);
+            $("#apple").css("top", apple.y);
         }
 
         function apple(id) {
@@ -223,16 +222,12 @@ function runProgram(){
             return apple;
         }
 
-
-
         function doCollide(obj1, obj2) {
             if ((obj1.x >= obj2.x && obj1.x + obj1.width <= obj2.x) && (obj1.y >= obj2.y && obj1.y + obj1.height <= obj2.y)) {
                 return true
             }
             return false
         }
-
-        
 
         /* The Score */
 
@@ -261,3 +256,20 @@ function runProgram(){
     }
   
 }
+
+/*
+putting in the loops -> handling a full-sized snake 
+instead of just the head (and of course, 
+    
+creating new pieces for the snake if an apple is eaten
+
+for (i = 0; i < snake.length; i++) {
+  snake.push(makeSnake("#snake"))
+}
+
+for (statement 1; statement 2; statement 3) {
+  // code block to be executed
+}
+
+
+*/
