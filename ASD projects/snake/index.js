@@ -10,9 +10,6 @@ function runProgram(){
     // Constant Variables
     var FRAMES_PER_SECOND_INTERVAL = 100;
     
-    var positionX = 0;
-    var positionY = 0;
-    
     var speedX = 0;
     var speedY = 0;
     
@@ -98,13 +95,13 @@ function runProgram(){
         /* Head (Fine) */
 
             function repositionHead() {
-                positionX += speedX;
-                positionY += speedY;
+                head.x += speedX;
+                head.y += speedY;
             }
 
             function redrawHead() {
-                $("#head").css("left", positionX);
-                $("#head").css("top", positionY);
+                $("#head").css("left", head.x);
+                $("#head").css("top", head.y);
             }
 
         /* Body (Concerned) */
@@ -122,13 +119,9 @@ function runProgram(){
             }
 
             function bodyFollow() {
-                for (var i = 0; body.length - 1; i >= i--){
-                    snake[i].x = snake[i-1].x;
-
-                    snake.push(makeSnake('#body1'));
-                    snake.push(makeSnake('#body2'));
-
-                    head.x -= 1;
+                for (var i = snake.length - 1; i >= 1; i--){
+                    body[i].x = body[i + 1].x;
+                    body[i].y = body[i + 1].y;
                 }
             }
 
@@ -159,24 +152,24 @@ function runProgram(){
         /* Collision (Done) */
 
             function stopSnake() {
-                if (positionX >= BOARD_WIDTH) {
+                if (head.x >= BOARD_WIDTH) {
                     speedX = 0;
-                    positionX = BOARD_WIDTH - 20;
+                    head.x = BOARD_WIDTH - 20;
                 }
 
-                else if (positionX + 20 <= 0){
+                else if (head.x + 20 <= 0){
                     speedX = 0;
-                    positionX = 0;
+                    head.x = 0;
                 }
 
-                if (positionY >= BOARD_HEIGHT){
+                if (head.y >= BOARD_HEIGHT){
                     speedY = 0;
-                    positionY = BOARD_HEIGHT - 20;
+                    head.y = BOARD_HEIGHT - 20;
                 }
                 
-                else if (positionY + 20 <= 0) {
+                else if (head.y + 20 <= 0) {
                     speedY = 0;
-                    positionY = 0;
+                    head.y = 0;
                 }
             }
 
@@ -225,7 +218,7 @@ function runProgram(){
         /* The Score */
 
         function increaseScore() {
-            points += 1;
+            points += 2;
             $('#counter').text(points);
             final();
         }
@@ -236,6 +229,7 @@ function runProgram(){
 
         function final() {
             if (points = 10){
+                
                 return endGame();
             }
         }
