@@ -201,7 +201,7 @@ function runProgram(){
         }
 
         function moveApple() {
-            apple.x = randomInteger(BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
+            apple.x = randomInteger(BOARD_WIDTH/APPLE_SIZE) * APPLE_SIZE;
             apple.y = randomInteger(BOARD_HEIGHT/APPLE_SIZE) * APPLE_SIZE;
 
             for (var i = 0; i < snake.length; i++){
@@ -241,20 +241,4 @@ function runProgram(){
         // turn off event handlers
         $(document).off();
     }
-  
 }
-
-/*
-putting in the loops -> handling a full-sized snake 
-instead of just the head (and of course, 
-    
-creating new pieces for the snake if an apple is eaten
-
-
-
-for (statement 1; statement 2; statement 3) {
-  // code block to be executed
-}
-
-
-*/
