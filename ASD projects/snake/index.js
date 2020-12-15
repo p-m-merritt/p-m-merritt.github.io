@@ -173,7 +173,6 @@ function runProgram(){
                 }
             }
 
-
     // The apple's stuff (Probably a problem area)
 
         function randomInteger(max) {
@@ -223,13 +222,10 @@ function runProgram(){
             final();
         }
 
-
-
-// Ending Things
+    // Ending Things
 
         function final() {
             if (points = 10){
-                
                 return endGame();
             }
         }
