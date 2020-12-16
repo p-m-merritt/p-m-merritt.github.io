@@ -56,4 +56,5 @@ body {
     width: 20px;
     height: 20px;
     background-color: rgb(233, 221, 221);
+    position: absolute;
 }

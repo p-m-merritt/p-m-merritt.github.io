@@ -66,7 +66,7 @@ function runProgram(){
         function newFrame() {
             repositionHead();
             stopSnake();
-            redrawHead();
+            redrawSnake();
             appleEaten();
         }
 
@@ -82,9 +82,7 @@ function runProgram(){
                 moveApple();
                 bodyFollow();
             }
-            
         }
-
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -99,9 +97,16 @@ function runProgram(){
                 head.y += speedY;
             }
 
-            function redrawHead() {
-                $("#head").css("left", head.x);
-                $("#head").css("top", head.y);
+            function redrawSnake() {
+                $("#snake").css("left", head.x);
+                $("#snake").css("top", head.y);
+                
+                for (var = snake[i]; ; i++) {
+                    // code block to be executed
+
+
+                }
+                
             }
 
         /* Body (Concerned) */
@@ -120,8 +125,8 @@ function runProgram(){
 
             function bodyFollow() {
                 for (var i = snake.length - 1; i >= 1; i--){
-                    body[i].x = body[i + 1].x;
-                    body[i].y = body[i + 1].y;
+                    snake[i].x = snake[i - 1].x;
+                    snake[i].y = snake[i - 1].y;
                 }
             }
 
