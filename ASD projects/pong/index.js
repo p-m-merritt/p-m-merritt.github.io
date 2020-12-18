@@ -39,9 +39,6 @@ function runProgram(){
         $(document).on('keydown', handleKeyDown);                       
         $(document).on('keyup', handleKeyUp);
 
-        $(document).on('victor', handleNewVictor);
-
-
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -62,8 +59,11 @@ function runProgram(){
             borderCrash(obj1);
             borderCrash(obj2);
             borderCrash(obj3);
+
+            bounce();
+            handleNewVictor()
         }
-  
+
     /* 
     Called in response to events.
     */
@@ -80,8 +80,8 @@ function runProgram(){
             var obj = {};
 
             obj.id = id;
-            obj.y = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
-            obj.x = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+            obj.y = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+            obj.x = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
             obj.width = $(id).width();
             obj.height = $(id).height();
             obj.speedX = 0;
@@ -90,27 +90,41 @@ function runProgram(){
             return obj;
         }
 
+        function bounce() {
+            if (obj3.x > obj1.width || obj3.x < obj2.width) {
+            obj3.speedX -= obj3.speedX;
+            }
+
+            else if (obj3.x < 0 || obj3.x > 0 ) {
+            obj3.speedX -= obj3.speedX;
+            }
+        }
+
     // Collision
 
         function borderCrash(obj) {
             if (obj.x >= BOARD_WIDTH) {
-                obj.speedX = 0;
-                obj.x = BOARD_WIDTH;
+                obj.speedX = Math.random();
+                obj.x = BOARD_WIDTH - 150;
             }
 
-            else if (obj.x <= 0){
-                obj.speedX = 0;
+            else if (obj.x + 150 <= 0){
+                obj.speedX = Math.random();
                 obj.x = 0;
             }
 
             if (obj.y >= BOARD_HEIGHT) {
-                obj.speedY = 0;
-                obj.y = BOARD_HEIGHT;
+                obj.speedY = Math.random();
+                obj.y = BOARD_HEIGHT - 150;
+                secondPoints += 2;
+                $('#secondScore').text(secondPoints);
             }
 
-            else if (obj.y <= 0){
-                obj.speedY = 0;
+            else if (obj.y + 150 <= 0){
+                obj.speedY = Math.random();
                 obj.y = 0;
+                firstPoints += 2;
+                $('#firstScore').text(firstPoints);
             }
         }
 
@@ -202,8 +216,15 @@ function runProgram(){
 
     // Updating rounds
 
+        // function score(){
+        //     if ( BOARD_HEIGHT){
 
+        //     }
 
+        //     else if ( BOARD_HEIGHT){
+                
+        //     }
+        // }
 
     // Ending Game
 
@@ -216,3 +237,7 @@ function runProgram(){
             }
         }
 }
+
+/*
+Up score when ball goes outside the border
+*/

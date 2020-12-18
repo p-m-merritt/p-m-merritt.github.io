@@ -25,6 +25,7 @@ function runProgram(){
     /* Snake's */
     
     var snake = [];
+
     snake.push(makeSnake("#snake"))
     snake[0].x = 20;
     snake[0].y = 20;
@@ -68,6 +69,7 @@ function runProgram(){
             stopSnake();
             redrawSnake();
             appleEaten();
+            bodyFollow();
         }
 
     /* 
@@ -80,10 +82,11 @@ function runProgram(){
             if(doCollide(apple, head)) {
                 increaseScore();
                 moveApple();
-                bodyFollow();
+                snake.push(makeSnake("#snake" + snake.length));
             }
         }
 
+        
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -101,12 +104,10 @@ function runProgram(){
                 $("#snake").css("left", head.x);
                 $("#snake").css("top", head.y);
                 
-                for (var = snake[i]; ; i++) {
-                    // code block to be executed
-
-
+                for (var i = 1; i < snake.length; i++) {
+                    $(snake[i].id).css("left", snake[i].x);
+                    $(snake[i].id).css("top", snake[i].y);
                 }
-                
             }
 
         /* Body (Concerned) */
@@ -119,7 +120,12 @@ function runProgram(){
                 body.height = $(".snake").height();
                 body.x = 0
                 body.y = 0
+                
 
+                var $div = $('<div>').appendTo('#board')
+                    .addClass('snake')
+                    .attr('id', body.id);
+                    
                 return body;
             }
 
@@ -198,7 +204,7 @@ function runProgram(){
         }
 
         function doCollide(obj1, obj2) {
-            if ((obj1.x >= obj2.x && obj1.x + obj1.width <= obj2.x) && (obj1.y >= obj2.y && obj1.y + obj1.height <= obj2.y)) {
+            if (obj1.x === obj2.x && obj1.y === obj2.y) {
                 return true
             }
             return false
@@ -230,8 +236,8 @@ function runProgram(){
     // Ending Things
 
         function final() {
-            if (points = 10){
-                return endGame();
+            if (points === 10){
+                endGame();
             }
         }
 

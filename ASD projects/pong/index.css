@@ -62,8 +62,8 @@ body {
         text-align: center;
         display: block;
         position: absolute;
-        bottom: 1px;
-        right: 15px;
+        top: 50px;
+        left: 550px;
     }
 
 /* Second Player's css*/
@@ -75,7 +75,7 @@ body {
     height: 30px;
     /* positioning */
     position: absolute;
-    top: 250px;
+    top: 450px;
     left: 150px;
     }
 
@@ -88,6 +88,6 @@ body {
         text-align: center;
         display: block;
         position: absolute;
-        bottom: 1px;
-        left: 8px;
+        top: 450px;
+        left: 550px;
     }
