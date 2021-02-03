@@ -11,6 +11,8 @@ var _ = {};
 * Implement each function below it's instructions
 */
 
+        // Problem 1
+
 /** _.identity
 * Arguments:
 *   1) Any value
@@ -21,10 +23,17 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
-function identity(i){
-    return i
+_.identity = function(i){
+    return i;
 }
-identity(4);
+
+_.identity(5);
+_.identity("hello");
+_.identity([1, 2, 3]);
+_.identity({a: "b"});
+
+
+        // Problem 2
 
 /** _.indexOf
 * Arguments:
@@ -41,19 +50,22 @@ identity(4);
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
+var letters = ["3","1","4"];
 
-    /*var indexOf = ["a","b","c"]
+_.indexOf = function(arrayName){
+    for (var i = 0; i < arrayName.length;i++){
+        var element = arrayName[i];
 
-    function letters(i){
-        if (){
-            return 
+        if (n){
+
         }
-
         else{
             return -1
         }
-    }*/
+    }
+}
 
+        // Problem 3
 
 /** _.contains
 * Arguments:
@@ -69,10 +81,17 @@ identity(4);
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+var farm = ["Cow", "Pig", "Chicken"]
 
-    /*
-    var  = []
-    */
+_.indexOf = function(array, value) {
+    {
+        return true;
+    }
+
+    return false;
+}
+
+        // Problem 4
 
 /** _.each
 * Arguments:
@@ -86,22 +105,13 @@ identity(4);
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+var letters = ["a","b","c"];
 
-    /*
-    [
-        {
-            "":,
-            "":,
-            "":,
-            "":,
-            "":,
-        }
-    ]
+_.each = function(e, i, a) {
+    console.log(e)
+}
 
-    function (){
-
-    }
-    */
+        // Problem 5
 
 /** _.filter
 * Arguments:
@@ -118,14 +128,17 @@ identity(4);
 * Challenge:
 *   use _.each in your implementation
 */
+_.filter = function(value, index, array) {
+    return f%2
+}
 
-    /*
-    var  = []
+_.each = function(data, func){
 
-    function (){
+}
 
-    }
-    */
+([1,2,3,4,5],_.filter)
+
+        // Problem 6
 
 /** _.reject
 * Arguments:
@@ -139,14 +152,16 @@ identity(4);
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+var numbers = [1,2,3,4,5,6];
 
-    /*
-    var  birds = ["Crows", "Geese", "Doves", "Magpies", "Swans"]
-
-    function rejection(e){
-        return e%2
+_.reject = function(arr) {
+    for(arr[i] = 0; arr[i] > arr.length; arr[i]++){
+        return arr[i] % 2;
     }
-    */
+}
+
+
+        // Problem 7
 
 /** _.map
 * Arguments:
@@ -162,21 +177,11 @@ identity(4);
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
-    /*
-    [
-        {
-            "":,
-            "":,
-            "":,
-            "":,
-            "":,
-        }
-    ]
 
-    function (){
 
-    }
-    */
+_.map = function() {
+    
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
