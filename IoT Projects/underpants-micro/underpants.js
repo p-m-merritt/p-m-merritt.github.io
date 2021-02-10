@@ -50,17 +50,15 @@ _.identity({a: "b"});
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-var letters = ["3","1","4"];
 
-_.indexOf = function(arrayName){
-    for (var i = 0; i < arrayName.length;i++){
-        var element = arrayName[i];
-
-        if (n){
-
+_.indexOf = function(arr, value){
+    for (var i = 0; i < arr.length; i++){
+        if (value === arr[i]){
+            return value;
         }
-        else{
-            return -1
+
+        else if (value != arr[i]){
+            return -1;
         }
     }
 }
@@ -81,14 +79,18 @@ _.indexOf = function(arrayName){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-var farm = ["Cow", "Pig", "Chicken"]
 
-_.indexOf = function(array, value) {
-    {
+
+_.contains = function(array, value) {
+    var farm = ["Cow", "Pig", "Chicken"]
+
+    if (value = array[i]){
         return true;
     }
-
-    return false;
+    else {
+        return false;
+    }
+    
 }
 
         // Problem 4
@@ -105,10 +107,10 @@ _.indexOf = function(array, value) {
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-var letters = ["a","b","c"];
-
-_.each = function(e, i, a) {
-    console.log(e)
+_.each = function(element, index, arr) {
+    //for (let [key, element]) {
+    //    console.log(key + element);
+    //  }
 }
 
         // Problem 5
@@ -128,15 +130,11 @@ _.each = function(e, i, a) {
 * Challenge:
 *   use _.each in your implementation
 */
+
 _.filter = function(value, index, array) {
-    return f%2
+    return value%2
 }
 
-_.each = function(data, func){
-
-}
-
-([1,2,3,4,5],_.filter)
 
         // Problem 6
 
@@ -152,7 +150,7 @@ _.each = function(data, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-var numbers = [1,2,3,4,5,6];
+var numbers = [5,10,15,20,25];
 
 _.reject = function(arr) {
     for(arr[i] = 0; arr[i] > arr.length; arr[i]++){
@@ -179,8 +177,13 @@ _.reject = function(arr) {
 
 
 
-_.map = function() {
-    
+_.map = function(element, index, arr) {
+    var newArr = [];
+
+    newArr[index];
+
+
+    return newArr;
 }
 
 //////////////////////////////////////////////////////////////////////
