@@ -11,7 +11,7 @@ var _ = {};
 * Implement each function below it's instructions
 */
 
-        // Problem 1
+        // Problem 1 Done
 
 /** _.identity
 * Arguments:
@@ -33,7 +33,7 @@ _.identity([1, 2, 3]);
 _.identity({a: "b"});
 
 
-        // Problem 2
+        // Problem 2 Done
 
 /** _.indexOf
 * Arguments:
@@ -53,17 +53,15 @@ _.identity({a: "b"});
 
 _.indexOf = function(arr, value){
     for (var i = 0; i < arr.length; i++){
-        if (value === arr[i]){
-            return value;
+        if (value == arr[i]){
+            return 1;
         }
 
-        else if (value != arr[i]){
-            return -1;
-        }
     }
+    return -1;
 }
 
-        // Problem 3
+        // Problem 3 Done
 
 /** _.contains
 * Arguments:
@@ -80,17 +78,14 @@ _.indexOf = function(arr, value){
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
-
-_.contains = function(array, value) {
-    var farm = ["Cow", "Pig", "Chicken"]
-
-    if (value = array[i]){
-        return true;
+_.contains = function(arr, value){
+    for (var i = 0; i < arr.length; i++){
+        if (arr[i] === value){
+            return true;
+        }
     }
-    else {
-        return false;
-    }
-    
+
+    return false;
 }
 
         // Problem 4
@@ -107,10 +102,12 @@ _.contains = function(array, value) {
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-_.each = function(element, index, arr) {
-    //for (let [key, element]) {
-    //    console.log(key + element);
-    //  }
+
+_.each = function(element, i, arr) {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+    console.log(element);
 }
 
         // Problem 5
@@ -131,8 +128,8 @@ _.each = function(element, index, arr) {
 *   use _.each in your implementation
 */
 
-_.filter = function(value, index, array) {
-    return value%2
+_.filter = function(e, i, arr) {
+    return i%2;
 }
 
 
@@ -150,11 +147,10 @@ _.filter = function(value, index, array) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-var numbers = [5,10,15,20,25];
 
-_.reject = function(arr) {
-    for(arr[i] = 0; arr[i] > arr.length; arr[i]++){
-        return arr[i] % 2;
+_.reject = function(e, i, arr) {
+    for(i = 0; i > arr.length; i++){
+        return element % 2;
     }
 }
 
@@ -178,12 +174,13 @@ _.reject = function(arr) {
 
 
 _.map = function(element, index, arr) {
-    var newArr = [];
+    var arr = [];
 
-    newArr[index];
+    arr[index] = element;
 
 
-    return newArr;
+    return element;
+    return arr;
 }
 
 //////////////////////////////////////////////////////////////////////
