@@ -88,7 +88,7 @@ _.contains = function(arr, value){
     return false;
 }
 
-        // Problem 4
+        // Problem 4 Done
 
 /** _.each
 * Arguments:
@@ -103,11 +103,14 @@ _.contains = function(arr, value){
 *      -> should log "a" "b" "c" to the console
 */
 
-_.each = function(element, i, arr) {
-    for (let i = 0; i < arr.length; i++) {
-        console.log(arr[i]);
+_.each = function(col, func) {
+    if(Array.isArray(col)){
+
+        for (let i = 0; i < col.length; i++) {
+            func(col[i], i, col)
+            console.log();
+        }
     }
-    console.log(element);
 }
 
         // Problem 5
@@ -128,9 +131,24 @@ _.each = function(element, i, arr) {
 *   use _.each in your implementation
 */
 
-_.filter = function(e, i, arr) {
-    return i%2;
-}
+_.filter = function(arr, func) {
+    var newArray = [];
+
+    if(Array.isArray(arr)){
+
+        for (let i = 0; i < arr.length; i++) {
+            if( func(arr[i], i, arr)){
+                    newArray.push(arr[i])
+                }
+                console.log();
+                
+            }
+            
+        }
+
+        return newArray
+
+    }
 
 
         // Problem 6
@@ -148,11 +166,11 @@ _.filter = function(e, i, arr) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
-_.reject = function(e, i, arr) {
-    for(i = 0; i > arr.length; i++){
-        return element % 2;
-    }
-}
+//_.reject = function(e, i, arr) {
+//    for(i = 0; i > arr.length; i++){
+//        return element % 2;
+//    }
+//}
 
 
         // Problem 7
