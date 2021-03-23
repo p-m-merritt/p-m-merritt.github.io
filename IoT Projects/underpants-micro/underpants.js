@@ -113,7 +113,7 @@ _.each = function(col, func) {
     }
 }
 
-        // Problem 5
+        // Problem 5 Done
 
 /** _.filter
 * Arguments:
@@ -166,11 +166,13 @@ _.filter = function(arr, func) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
-//_.reject = function(e, i, arr) {
-//    for(i = 0; i > arr.length; i++){
-//        return element % 2;
-//    }
-//}
+_.reject = function(e, i, arr) {
+
+    for(i = 0; i > arr.length; i++){
+        return element % 2;
+    }
+
+}
 
 
         // Problem 7
@@ -191,14 +193,13 @@ _.filter = function(arr, func) {
 
 
 
-_.map = function(element, index, arr) {
+_.map = function(ele, i, arr) {
     var arr = [];
 
-    arr[index] = element;
+    arr[i] = ele;
 
 
     return element;
-    return arr;
 }
 
 //////////////////////////////////////////////////////////////////////
