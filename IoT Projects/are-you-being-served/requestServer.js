@@ -7,7 +7,7 @@ var port = 8686;
 
 http.createServer (function (req, res){
 
-    var url = "http://p-m-merritt.github.io";
+    var url = args[0] ? args[0] : "http://p-m-merritt.github.io";
 
     request(url, function (error, response, body){
 
