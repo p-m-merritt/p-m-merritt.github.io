@@ -23,8 +23,4 @@ var express = require('express'),
 
 const app = require('../servers/http');
 
-// TODO 4
-app.use('/pi/sensors', sensorRoutes);
-
-
 module.exports = router;

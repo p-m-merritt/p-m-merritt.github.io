@@ -19,5 +19,3 @@ var express = require('express'),
 // // // // // // // //
 
 module.exports = router;
-
-const app = require('../servers/http');
