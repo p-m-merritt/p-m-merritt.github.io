@@ -14,30 +14,21 @@ var device = resources.pi.sensors.pir;
         resources.send(resources.pi.actuators.leds[req.params.id]);
     });
 
-        // Task 1
+// TODO 5
+    // Task 1 (DONE)
+        function connectHardware(){
+            new Gpio(device.gpio, 'in', 'both')
+            device.value = !!value;
+        }
 
-            function connectHardware(){
-                new Gpio(device.gpio, 'in', 'both')
+    // Task 2 (DONE)
+        function start(){
+            exports.start = function (params) {
+                connectHardware()
+            };
+        }
 
-                device.value = !!value;
-            }
-
-        // Task 2
-
-            function start(){
-                exports.start = function (params) {};
-
-            }
-
-        // Task 3
-        
-            function stop(){
-                sensor.unexport();
-            }
-
-        // Task 4
-            var pirPlugin = require('./plugins/internal/pirPlugin');
-
-
-
-            pirPlugin.stop();
+    // Task 3 (DONE)
+        function stop(){
+            sensor.unexport();
+        }

@@ -1,23 +1,15 @@
-// TODO 3
-	// Task 2
-		var sensorRoutes = require('./../routes/sensors');
-		app.use(cors());
-		app.use('/pi/sensors', sensorRoutes);
-
-// TODO 4
-var actuatorRoutes = require('./../routes/actuators');
-
-////////
-
 var express = require('express'),
 	router = express.Router(),
 	resources = require('./../resources/model');
 
+// TODO 3
+	// Task 2
+		var sensorRoutes = require('./../routes/sensors');
+			app.use(cors());
+			app.use('/pi/sensors', sensorRoutes);
 
-
-module.exports = router;
-
-////////
+// TODO 4
+	var actuatorRoutes = require('./../routes/actuators');
 
 // TODO 3 cont.
 	// Task 1
@@ -41,3 +33,6 @@ const app = require('../servers/http');
 
 // TODO 4
 app.use('/pi/sensors', sensorRoutes);
+
+
+module.exports = router;

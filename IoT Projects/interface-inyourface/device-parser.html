@@ -103,31 +103,45 @@
 
     $.ajax({
       // TODO 6: Add in the basic properties and error property of the object passed to the AJAX call
-      
-      url: $('#host').val(),
-      method: 'GET',
-      dataType: 'json',
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.log(errorThrown);
-      },
+        url: $('#host').val(),
+        method: 'GET',
+        dataType: 'json',
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log(errorThrown);
+        },
 
-      
-      success: function (data) {
-        // These two lines add links to the metadata and documentation of the device, respectively.
-        // data.links.meta.title and data.links.doc.title place little bits of plain text ("Metadata" and "Documentation", respectively) before the links themselves
-        $('#meta').html(data.links.meta.title + " <a href=\"" + data.links.meta.rel + "\">" + data.links.meta.rel + "</a>");
-        $('#doc').html(data.links.doc.title + " <a href=\"" + data.links.doc.rel + "\">" + data.links.doc.rel + "</a>");
+        success: function (data) {
+          // These two lines add links to the metadata and documentation of the device, respectively.
+          // data.links.meta.title and data.links.doc.title place little bits of plain text ("Metadata" and "Documentation", respectively) before the links themselves
+            $('#meta').html(data.links.meta.title + " <a href=\"" + data.links.meta.rel + "\">" + data.links.meta.rel + "</a>");
+            $('#doc').html(data.links.doc.title + " <a href=\"" + data.links.doc.rel + "\">" + data.links.doc.rel + "</a>");
 
-        // TODO 7: Generate the URL to the sensors of the device
-
+      // TODO 7: Generate the URL to the sensors of the device ()
         $.ajax({
           url: sensorsPath,
           method: 'GET',
           dataType: 'json',
 
-          // TODO 8: Create a success function that iterates over the list of sensors and displays them
+          sensorsPath = data.url,
+          data.resources.sensors.url
+
+      // TODO 8: Create a success function that iterates over the list of sensors and displays them
+        // Part 1 ()
+        var sensorsList = "";
+
+// Part 2 ()
+  $('#sensors').html(Object.keys(data).length + " sensors found!");
+
+// Part 3 ()
+  var html = "<li><a href=\"" + sensorsPath + "temp" + "\">" + data["temp"].name + "</a></li>";
+
+// Part 4 ()
+  $('#sensors-list').html(sensorsList);
+      
+          
+
           success: function (data) {
-            
+
           },
 
           error: function (jqXHR, textStatus, errorThrown) {
