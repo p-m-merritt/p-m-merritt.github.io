@@ -1,15 +1,8 @@
-// TODO 2 
-	var app = express();
-
-////
-
 var express = require('express'),
 	cors = require('cors');
 	
-
-module.exports = app;
-
-// TODO 2 cont.
+// TODO 2 
+	var app = express();
 	app.use(cors());
 
 	app.get('/', function(req, res){
@@ -20,3 +13,7 @@ module.exports = app;
 	//Task 2
 		var actuatorRoutes = require('./../routes/actuators');
 		app.use('/pi/sensors', sensorRoutes);
+
+// // // // // //
+
+module.exports = app;

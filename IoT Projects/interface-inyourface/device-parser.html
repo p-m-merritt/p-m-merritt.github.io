@@ -104,6 +104,13 @@
     $.ajax({
       // TODO 6: Add in the basic properties and error property of the object passed to the AJAX call
       
+      url: $('#host').val(),
+      method: 'GET',
+      dataType: 'json',
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(errorThrown);
+      },
+
       
       success: function (data) {
         // These two lines add links to the metadata and documentation of the device, respectively.
