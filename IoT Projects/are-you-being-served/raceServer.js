@@ -14,9 +14,12 @@ http.createServer(function(req, res) {
 
     // TODO 11: Make the whole thing parallel ()
     async.series(
-        // TODO 8: Supply an array of functions ()
+        // TODO 8: Supply an array of functions (DONE)
             [
-                wrapper(callback)
+                function (callback){wrapper (callback)},
+                function (callback){wrapper (callback)},
+                function (callback){wrapper (callback)},
+                function (callback){wrapper (callback)},
             ],
         function (error, results) {
             // TODO 9: add a callback function... () 
