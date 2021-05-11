@@ -163,7 +163,7 @@
         $("#ws-chart-container").append($("<p>").attr("id", "ws-highest").text("Highest recorded value is " + wsHighest));
         $("#ws-chart-container").append($("<p>").attr("id", "ws-lowest").text("Highest recorded value is " + wsLowest));
 
-      // TODO 2: Update high and low records ()
+      // TODO 2: Update high and low records (DONE)
         function updateRegRecords(value){
           // Update the regular polling records
             if (regHighest < value){
@@ -205,7 +205,7 @@
 
         doPoll();
 
-      // TODO 4: WebSocket Polling ()
+      // TODO 4: WebSocket Polling (DONE)
         var socket = new WebSocket('ws://https://6a08ff0bb0d1.ngrok.io/pi/sensors/dht/temperature');
         
         // Create a new WebSocket connection here
