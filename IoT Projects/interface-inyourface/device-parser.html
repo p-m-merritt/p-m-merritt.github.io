@@ -122,25 +122,24 @@
           method: 'GET',
           dataType: 'json',
 
-          sensorsPath = data.url,
-          data.resources.sensors.url
+          sensorsPath = [
+            data.url,
+            data.resources.sensors.url
+          ],
 
       // TODO 8: Create a success function that iterates over the list of sensors and displays them
-        // Part 1 ()
-        var sensorsList = "";
-
-// Part 2 ()
-  $('#sensors').html(Object.keys(data).length + " sensors found!");
-
-// Part 3 ()
-  var html = "<li><a href=\"" + sensorsPath + "temp" + "\">" + data["temp"].name + "</a></li>";
-
-// Part 4 ()
-  $('#sensors-list').html(sensorsList);
-      
-          
-
           success: function (data) {
+            // Part 1 (DONE)
+              var sensorsList = " ";
+
+            // Part 2 (DONE)
+              $('#sensors').html(Object.keys(data).length + " sensors found!");
+
+            // Part 3 (DONE)
+              var html = "<li><a href=\"" + sensorsPath + "temp" + "\">" + data["temp"].name + "</a></li>";
+
+            // Part 4 (DONE)
+              $('#sensors-list').html(sensorsList);
 
           },
 

@@ -194,13 +194,21 @@
         }
 
       // TODO 3: Regular Polling (DONE)
-        $.getJSON("https://6a08ff0bb0d1.ngrok.io/pi/sensors/temperature", function addDataPoint(result, regData, regChart){});
-      
+        
+
         function doPoll() {
+          $.getJSON();
+
+        }
+        $.getJSON("https://6a08ff0bb0d1.ngrok.io/pi/sensors/dht/temperature", function (result) {
+          addDataPoint(result, regData, regChart);
+
           updateRegRecords(result.value);
 
           setTimeout(10000);
-        }
+
+        });
+
 
         doPoll();
 
@@ -213,19 +221,22 @@
 
           socket.onmessage = function (event) {
             // Fill in the body of the onmessage function
-              
               updateWSRecords()
+
           };
 
           socket.onerror = function (error) {
             // Fill in the body of the onerror function
               console.log(error);
+
           };
 
           function getTime() {
             var d = new Date();
             return d.toLocaleTimeString();
+
           }
+
     }
   });
 
