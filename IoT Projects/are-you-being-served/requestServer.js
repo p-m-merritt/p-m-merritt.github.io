@@ -1,28 +1,34 @@
 // requestServer.js file
-var args = process.argv.slice(2);
+    // TODO 4: Generalize With Command Line Arguments (DONE)
+        var args = process.argv.slice(2);
 
-const request = require("request");
-const http = require("http");
-var port = 8686;
+    // TODO 1: Initialize Variables (DONE)
 
-http.createServer (function (req, res){
+        const request = require("request");
+        const http = require("http");
+        var port = 8686;
 
-    var url = args[0] ? args[0] : "http://p-m-merritt.github.io";
+    // TODO 2: Basic Request Server (DONE)
 
-    request(url, function (error, response, body){
+        http.createServer (function (req, res){
 
-    if (response.statusCode == 200 && !error === true){
-        res.writeHead(200,{"content-type": "text/html"})
-        res.write(body);
-    }
+            var url = args[0] ? args[0] : "http://p-m-merritt.github.io";
 
-    else{
-        res.writeHead(20,{"content-type": "text/plain"})
-        res.write(error.toString());
-    }
+            request(url, function (error, response, body){
 
-    res.end()
-    });
+            if (response.statusCode == 200 && !error === true){
+                res.writeHead(200,{"content-type": "text/html"})
+                res.write(body);
+            }
 
-}).listen(port);
-console.log("Serving on port" + port);
+            else{
+                res.writeHead(20,{"content-type": "text/plain"})
+                res.write(error.toString());
+            }
+
+            res.end()
+            });
+
+        }).listen(port);
+
+console.log("Serving on port " + port);
