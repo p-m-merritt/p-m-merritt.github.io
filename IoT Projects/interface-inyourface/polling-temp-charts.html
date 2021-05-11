@@ -195,18 +195,18 @@
 
       // TODO 3: Regular Polling (DONE)
         function doPoll() {
-          $.getJSON();
+          $.getJSON("https://6a08ff0bb0d1.ngrok.io/pi/sensors/dht/temperature", function (result) {
+            addDataPoint(result, regData, regChart);
+
+            updateRegRecords(result.value);
+
+            updateWSRecords(result.value);
+
+            setTimeout(10000);
+
+          });
 
         }
-
-        $.getJSON("https://6a08ff0bb0d1.ngrok.io/pi/sensors/dht/temperature", function (result) {
-          addDataPoint(result, regData, regChart);
-          updateRegRecords(result.value);
-          updateWSRecords(result.value);
-
-          setTimeout(10000);
-
-        });
 
         doPoll();
 
