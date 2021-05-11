@@ -197,8 +197,6 @@
 
             updateRegRecords(result.value);
 
-            updateWSRecords(result.value);
-
             setTimeout(10000);
 
           });
@@ -218,7 +216,7 @@
 
               addDataPoint(result, wsData, wsChart);
 
-              updateWSRecords()
+              updateWSRecords(result.value);
           };
 
           socket.onerror = function (error) {
