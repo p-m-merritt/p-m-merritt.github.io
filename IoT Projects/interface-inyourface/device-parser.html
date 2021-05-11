@@ -116,17 +116,13 @@
             $('#meta').html(data.links.meta.title + " <a href=\"" + data.links.meta.rel + "\">" + data.links.meta.rel + "</a>");
             $('#doc').html(data.links.doc.title + " <a href=\"" + data.links.doc.rel + "\">" + data.links.doc.rel + "</a>");
             
-        sensorsPath:
-          data.url +
-          data.resources.sensors.url
-          
+        sensorsPath = data.url + data.resources.sensors.url
+
       // TODO 7: Generate the URL to the sensors of the device ()
         $.ajax({
           url: sensorsPath,
           method: 'GET',
           dataType: 'json',
-
-          
 
       // TODO 8: Create a success function that iterates over the list of sensors and displays them
           success: function (data) {
