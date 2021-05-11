@@ -23,15 +23,20 @@ http.createServer(function(req, res) {
             ],
         function (error, results) {
             // TODO 9: add a callback function... () 
-            res.write("Results:\n");
+                // Step 1: The Preamble //
+                    res.write("Results:\n");
 
-            var victoryOrder = sortTogether(racers, results);
-
+                // Step 2: The Racers Loop //
+                    var victoryOrder = sortTogether(racers, results);
+                
+                // Step 3: The Racers Response //
             for (racers = 0; racers > 0; racers++){
                 racers + "\n";
             }
 
-            d.getTime()
+                // Step 4: The Race Time //
+                    d.getTime()
+
         }
     );
     
