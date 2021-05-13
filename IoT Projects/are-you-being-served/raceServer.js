@@ -36,11 +36,11 @@ http.createServer(function(req, res) {
                     }
 
                 // Step 4: The Race Time //
-                    let endTime = d.endTime();
                     let d = new Date();
+                    let endTime = d.getTime();
+                    
 
-                    d.getTime();
-                    d.endTime();
+                    res.end(endTime - startTime + "\n");
         }
     );
     
