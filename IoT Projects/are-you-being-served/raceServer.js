@@ -1,5 +1,6 @@
 const http = require("http");
 const async = require("async");
+const { endianness } = require("os");
 
 const port = 8686;
 
@@ -28,11 +29,13 @@ http.createServer(function(req, res) {
 
                 // Step 2: The Racers Loop //
                     var victoryOrder = sortTogether(racers, results);
+
+                    
                 
                 // Step 3: The Racers Response //
-            for (racers = 0; racers > 0; racers++){
-                racers + "\n";
-            }
+                for (i = 0; i < racers.length; i++){
+                    racers[i] + "\n";
+                }
 
                 // Step 4: The Race Time //
                     d.getTime()
@@ -44,7 +47,10 @@ http.createServer(function(req, res) {
 
 // TODO 7: create a common function... ()
     function wrapper(callback){
-        setTimeout(d.getTime(null), Math.random()*1000)
+        setTimeout(function (){
+            let d = new Date();
+            callback(null, d.getTime())
+        }, Math.random()*1000)
     }
 
 function sortTogether(names, times) {
