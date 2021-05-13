@@ -14,7 +14,7 @@ http.createServer(function(req, res) {
         let startTime = d.getTime();
 
     // TODO 11: Make the whole thing parallel ()
-    async.series(
+    async.parallel(
         // TODO 8: Supply an array of functions (DONE)
             [
                 function (callback){wrapper (callback)},
@@ -29,17 +29,18 @@ http.createServer(function(req, res) {
 
                 // Step 2: The Racers Loop //
                     var victoryOrder = sortTogether(racers, results);
-
-                    
                 
                 // Step 3: The Racers Response //
-                for (i = 0; i < racers.length; i++){
-                    racers[i] + "\n";
-                }
+                    for (i = 0; i < racers.length; i++){
+                        res.write(victoryOrder[i] + "\n");
+                    }
 
                 // Step 4: The Race Time //
-                    d.getTime()
+                    let endTime = d.endTime();
+                    let d = new Date();
 
+                    d.getTime();
+                    d.endTime();
         }
     );
     
