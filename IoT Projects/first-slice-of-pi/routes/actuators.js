@@ -3,7 +3,7 @@ var express = require('express'),
 	resources = require('./../resources/model');
 
 //TODO 4
-	//Task 1
+	// Task 1 //
 		router.route('/').get(function (req, res, next) {
 			res.send(resources.pi.sensors);
 		});
