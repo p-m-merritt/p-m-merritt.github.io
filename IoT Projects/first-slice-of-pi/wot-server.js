@@ -7,12 +7,12 @@ console.log(httpServer)
     // Task 4 (DONE) //
 		var pirPlugin = require('./plugins/internal/pirPlugin');
 		pirPlugin.start({});
-		pirPlugin.stop();
+		
 
 // TODO 6 cont.
     // Task 4 (DONE) //
 		dhtPlugin.start({'frequency': 2000});
-		dhtPlugin.stop();
+		
 
 
 
@@ -21,5 +21,10 @@ var server = httpServer.listen(resources.pi.port, function () {
 });
 
 process.on('SIGINT', function() {
+	// TODO 5 - Task 4
+	pirPlugin.stop();
+	// TODO 6 - Task 4
+	dhtPlugin.stop();
+
 	process.exit();
 });
