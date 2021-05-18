@@ -16,7 +16,6 @@ console.log(httpServer)
 		
 
 
-
 var server = httpServer.listen(resources.pi.port, function () {
 	console.log("Running the Pi on port " + resources.pi.port);
 });
