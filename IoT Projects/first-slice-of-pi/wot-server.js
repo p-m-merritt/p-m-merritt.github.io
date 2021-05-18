@@ -10,7 +10,8 @@ console.log(httpServer)
 		
 
 // TODO 6 cont.
-    // Task 4 (DONE) //
+	// Task 4 (DONE) //
+		var dhtPlugin = require('./plugins/internal/dhtPlugin');
 		dhtPlugin.start({'frequency': 2000});
 		
 
@@ -22,9 +23,9 @@ var server = httpServer.listen(resources.pi.port, function () {
 
 process.on('SIGINT', function() {
 	// TODO 5 - Task 4
-	pirPlugin.stop();
+		pirPlugin.stop();
 	// TODO 6 - Task 4
-	dhtPlugin.stop();
+		dhtPlugin.stop();
 
 	process.exit();
 });
