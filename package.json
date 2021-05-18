@@ -1,5 +1,11 @@
 {
   "dependencies": {
-    "node-json2html": "^2.1.0"
+    "10": "^0.0.1",
+    "cors": "^2.8.5",
+    "epoll": "^4.0.1",
+    "express": "^4.17.1",
+    "node-dht-sensor": "^0.4.3",
+    "node-json2html": "^2.1.0",
+    "onoff": "^6.0.3"
   }
 }
