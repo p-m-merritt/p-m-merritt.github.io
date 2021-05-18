@@ -7,8 +7,11 @@ var device = resources.pi.sensors.pir;
 // TODO 5
     // Task 1 (DONE)
         function connectHardware(){
-            new Gpio(device.gpio, 'in', 'both')
-            device.value = !!value;
+            var sensor = new Gpio(device.gpio, 'in', 'both')
+
+            sensor.watch(function (err, value){
+                device.value = !!value;
+            });
         }
 
     // Task 2 (DONE)
