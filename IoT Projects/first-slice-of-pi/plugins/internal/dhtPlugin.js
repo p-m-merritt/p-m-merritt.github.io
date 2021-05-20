@@ -6,13 +6,15 @@ var device = resources.pi.sensors.dht;
 var localParams = {'frequency': 2000};
 
 // TODO 6
-    // Task 1 (DONE)
+    // Task 1 ()
         function connectHardware() {
             sensorDriver.initialize(device.model, device.gpio)
             sensorDriver.read()
             
             device.temperature.value = parseFloat(readout.temperature);
             device.humidity.value = parseFloat(readout.humidity);
+
+            // // //
 
             sensor.initialize();
             sensor.read();
@@ -25,7 +27,7 @@ var localParams = {'frequency': 2000};
     // Task 2 (DONE)
         function start(params) {
             localParams = params ? params : localParams;
-            connectHardware()
+            connectHardware();
         }
         
     // Task 3 (DONE)
