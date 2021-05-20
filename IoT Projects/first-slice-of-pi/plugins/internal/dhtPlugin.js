@@ -6,7 +6,7 @@ var device = resources.pi.sensors.dht;
 var localParams = {'frequency': 2000};
 
 // TODO 6
-    // Task 1 ()
+    // Task 1 (DONE)
         function connectHardware() {
             sensorDriver.initialize(device.model, device.gpio)
 
