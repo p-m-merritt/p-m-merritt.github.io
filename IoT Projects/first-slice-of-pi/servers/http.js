@@ -3,6 +3,7 @@ var express = require('express'),
 
 var actuatorRoutes = require('./../routes/actuators');
 var sensorRoutes = require('./../routes/sensors');
+
 // TODO 2 ()
 	var app = express();
 	app.use(cors());
@@ -11,11 +12,16 @@ var sensorRoutes = require('./../routes/sensors');
 		res.send('Some response for accessing the root');
 	});
 
+	app.get('/pi', function(req, res){
+		res.send('Welcome to my pi');
+	});
+
 // TODO 4 (DONE)
 	// Task 2 //
 		app.use('/pi/sensors', sensorRoutes);
 
 // // // // // //
+
 console.log(app, "any");
 
 module.exports = app;
