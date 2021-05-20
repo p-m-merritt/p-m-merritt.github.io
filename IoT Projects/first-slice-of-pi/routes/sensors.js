@@ -17,8 +17,12 @@ var express = require('express'),
 			res.send(resources.pi.sensors.pir);
 		});
 
-		router.route('/temperature').get(function (req, res, next) {
+		router.route('/dht/temperature').get(function (req, res, next) {
 			res.send(resources.pi.sensors.dht.temperature);
+		});
+
+		router.route('/dht/humidity').get(function (req, res, next) {
+			res.send(resources.pi.sensors.dht.humidity);
 		});
 
 const app = require('../servers/http');
