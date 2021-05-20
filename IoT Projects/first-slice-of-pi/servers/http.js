@@ -19,6 +19,7 @@ var sensorRoutes = require('./../routes/sensors');
 // TODO 4 (DONE)
 	// Task 2 //
 		app.use('/pi/sensors', sensorRoutes);
+		app.use('/pi/actuators', actuatorRoutes);
 
 // // // // // //
 

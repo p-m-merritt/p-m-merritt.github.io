@@ -4,10 +4,6 @@ var express = require('express'),
 
 //TODO 4
 	// Task 1 //
-		router.route('/pi').get(function (req, res, next) {
-			res.send(resources.pi);
-		});
-
 		router.route('/').get(function (req, res, next) {
 			res.send(resources.pi.sensors);
 		});
