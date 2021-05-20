@@ -11,7 +11,7 @@ var localParams = {'frequency': 2000};
             sensorDriver.initialize(device.model, device.gpio)
             sensorDriver.read()
 
-            var readout = sensorDriver
+            var readout = sensorDriver.read()
             
             device.temperature.value = parseFloat(readout.temperature);
             device.humidity.value = parseFloat(readout.humidity);
